@@ -3,7 +3,7 @@ import ee
 import json
 
 # Initialize Earth Engine
-service_account = 'earth-engine-access@accenture-hackathon-457015.iam.gserviceaccount.com'
+service_account = 'acc-1-liquid-galaxy@accenture-hackathon-457015.iam.gserviceaccount.com'
 key_path = 'key.json'
 credentials = ee.ServiceAccountCredentials(service_account, key_path)
 ee.Initialize(credentials)
