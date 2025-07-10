@@ -4,19 +4,16 @@ import os
 import json
 
 # ----------------------------------------
-# Read credentials from env variable
+# Load and write Google credentials
 # ----------------------------------------
-
-# Try to read from Railway env var
 creds_json = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS_JSON")
-
 if creds_json:
-    # If running on Railway, write key.json
+    # Write the JSON string from env back into key.json
     with open("key.json", "w") as f:
         f.write(creds_json)
     key_path = "key.json"
 else:
-    # Fallback for local dev
+    # Fallback: expect key.json in project root for local development
     key_path = "key.json"
 
 # Initialize Earth Engine
