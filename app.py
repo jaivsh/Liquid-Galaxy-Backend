@@ -1,10 +1,26 @@
 from flask import Flask, request, jsonify, Response
 import ee
+import os
 import json
+
+# ----------------------------------------
+# Read credentials from env variable
+# ----------------------------------------
+
+# Try to read from Railway env var
+creds_json = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS_JSON")
+
+if creds_json:
+    # If running on Railway, write key.json
+    with open("key.json", "w") as f:
+        f.write(creds_json)
+    key_path = "key.json"
+else:
+    # Fallback for local dev
+    key_path = "key.json"
 
 # Initialize Earth Engine
 service_account = 'acc-1-liquid-galaxy@accenture-hackathon-457015.iam.gserviceaccount.com'
-key_path = 'key.json'
 credentials = ee.ServiceAccountCredentials(service_account, key_path)
 ee.Initialize(credentials)
 
