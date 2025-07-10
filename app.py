@@ -69,7 +69,7 @@ def fetch_buildings():
         region = ee.Geometry.Rectangle([min_lng, min_lat, max_lng, max_lat])
         col = (ee.FeatureCollection("GOOGLE/Research/open-buildings/v3/polygons")
                .filterBounds(region)
-               .limit(50)
+               .limit(1000)
                .select(['lowpoly', 'confidence']))
         features = col.getInfo()['features']
 
